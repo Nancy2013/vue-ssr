@@ -13,12 +13,16 @@ const Vue = require('vue');
 
 const server = express();
 const app = new Vue({
-  template:`<div>hello vue ssr</div>`,
+  template: `<div>hello vue ssr</div>`,
 });
 
-const renderer=serverRenderer.createRenderer({})
-server.get('/', (req, res) => { 
-  renderer.renderToString(app, (err, html) => { 
+// 引入createBundleRenderer
+// 引入服务端Bundle /dist/
+// 引入客户端清单文件
+// 引入html模板
+const renderer = serverRenderer.createRenderer({})
+server.get('/', (req, res) => {
+  renderer.renderToString(app, (err, html) => {
     try {
       res.end(html);
     } catch (error) {

@@ -16,16 +16,23 @@
  * 5、服务器端不需要挂载
  */
 
+
+
 import Vue from 'vue';
 import App from './App.vue'
-import { createRouter } from './router'
+import {
+  createRouter
+} from './router'
 
-export function createApp() { 
+export function createApp() {
   const router = createRouter();
-  const app=new Vue({
+  const app = new Vue({
     router,
-    render:h=>h(App),
+    render: h => h(App),
   });
 
-  return {app,router}
+  return {
+    app,
+    router
+  }
 }
