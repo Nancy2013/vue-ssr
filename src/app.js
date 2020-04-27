@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-27 11:26:08
+ * @LastEditTime: 2020-04-27 13:52:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\app.js
@@ -13,7 +13,7 @@
  * 2、引入App界面
  * 3、创建createAPP工厂函数
  * 4、返回app、router
- * 5、后端不需要挂载
+ * 5、服务器端不需要挂载
  */
 
 import Vue from 'vue';

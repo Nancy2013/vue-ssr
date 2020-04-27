@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-27 11:02:44
+ * @LastEditTime: 2020-04-27 14:14:10
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\router\index.js
@@ -22,6 +22,7 @@ const Detail = () => import('@/views/Detail.vue');
 const About = () => import('@/views/About.vue');
 
 export function createRouter() { 
+  // 返回路由实例
   return new Router({
     hash:'history',
     routes: [
