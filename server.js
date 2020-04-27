@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-26 10:15:46
- * @LastEditTime: 2020-04-26 16:23:58
+ * @LastEditTime: 2020-04-27 11:18:58
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\server\index.js
@@ -30,5 +30,5 @@ server.get('/', (req, res) => {
 });
 
 server.listen(8080, () => {
-  console.log('Server running at http://127.0.0.1:8080/');
+  console.log('Server running at http://127.0.0.11:8080/');
 });
