@@ -9,21 +9,19 @@
 // node后台服务搭建
 const express = require('express');
 const path = require('path');
-const { createBundleRenderer }=require('vue-server-renderer')
+const {
+  createBundleRenderer
+} = require('vue-server-renderer')
 const fs = require('fs');
-const resolve = file => path.resolve(__dirname,file);
+const resolve = file => path.resolve(__dirname, file);
 const bundle = require('./dist/vue-ssr-server-bundle.json'); // 服务器端bundle
 const clientManifest = require('./dist/vue-ssr-client-manifest.json') // 客户端清单文件
-const templatePath=resolve('./src/index.template.html')
+const templatePath = resolve('./src/index.template.html')
 
 
 const server = express();
 
-// 引入createBundleRenderer
-// 引入服务端Bundle /dist/
-// 引入客户端清单文件
-// 引入html模板
-function createRenderer() { 
+function createRenderer() {
   return createBundleRenderer(bundle, {
     template: fs.readFileSync(templatePath, 'utf-8'),
     clientManifest,
@@ -33,13 +31,13 @@ const renderer = createRenderer();
 
 server.get('/', (req, res) => {
   const context = {
-    title:'vue ssr',
-    url:req.url,
+    title: 'vue ssr',
+    url: req.url,
   }
   renderer.renderToString(context, (err, html) => {
     if (err) {
       res.end(html);
-    } else { 
+    } else {
       console.error(err);
       res.status(500);
       res.end("服务器请求错误！");

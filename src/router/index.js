@@ -17,29 +17,28 @@ import Router from 'vue-router'
 
 // 注册全局插件
 Vue.use(Router);
-const Home = () => import('@/views/Home.vue');
-const Detail = () => import('@/views/Detail.vue');
-const About = () => import('@/views/About.vue');
+const Home = () => import('../views/Home.vue');
+const Detail = () => import('../views/Detail.vue');
+const About = () => import('../views/About.vue');
 
-export function createRouter() { 
+export function createRouter() {
   // 返回路由实例
   return new Router({
-    hash:'history',
-    routes: [
-      {
+    hash: 'history',
+    routes: [{
         path: '/home',
-        name:'home',
-        component:Home,
+        name: 'home',
+        component: Home,
       },
       {
         path: '/detail',
-        name:'detail',
-        component:Detail,
+        name: 'detail',
+        component: Detail,
       },
       {
         path: '/about',
-        name:'about',
-        component:About,
+        name: 'about',
+        component: About,
       },
     ]
   });
