@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-28 09:59:08
+ * @LastEditTime: 2020-04-28 15:10:57
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\app.js
@@ -20,6 +20,7 @@
 
 import Vue from 'vue';
 import App from './App.vue'
+import { sync } from 'vuex-router-sync'
 import {
   createRouter
 } from './router'
@@ -29,6 +30,9 @@ import { createStore } from './store'
 export function createApp() {
   const router = createRouter();
   const store = createStore();
+
+  // 与store同步路由，注册`store.state.route`
+  sync(store, router)
   const app = new Vue({
     router,
     store,
