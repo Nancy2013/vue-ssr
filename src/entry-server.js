@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-29 15:43:35
+ * @LastEditTime: 2020-04-29 16:37:50
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-server.js
@@ -19,7 +19,7 @@ import { createApp } from './app';
 
 export default (context) => { 
   return new Promise((resolve, reject) => { 
-    const { app, router } = createApp();
+    const { app, router,store } = createApp();
     const { url } = context;
     router.push(url);
     router.onReady(() => {
@@ -29,6 +29,9 @@ export default (context) => {
       if (!matchedComponents.length) {
         return reject({ code: 404 });
       }
+      // 使用Promise.all方法遍历路由
+      // 如果组件暴露asyncData方法，需要先请求数据，并传递store、当前路由
+      // 将请求结果添加入context，返回app
       resolve(app);
     }, reject);
   })
