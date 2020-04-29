@@ -15,9 +15,11 @@ import actions from './actions'
 
 Vue.use(Vuex);
 
-export function createStore() { 
+export function createStore() {
   return new Vuex.Store({
-    state: {},
+    state: {
+      userInfo: {},
+    },
     getters,
     mutations,
     actions,

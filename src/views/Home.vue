@@ -8,15 +8,19 @@
  -->
 
 <template>
+  <div>
+    <div>Home</div>
 
-  <div>Home</div>
+  </div>
 </template>
 <script>
-  // 定义asynData方法，dispatch $store中的actions
-  export default {
-    name: "Home",
-    props: {
-      msg: String
-    }
-  };
+export default {
+  name: "Home",
+  props: {
+    msg: String
+  },
+  data() {
+    return {};
+  }
+};
 </script>

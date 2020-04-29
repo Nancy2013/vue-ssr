@@ -6,4 +6,12 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\mutations.js
  */
-export default {}
+export default {
+    setUserInfo({
+        state
+    }, payload) {
+        state.userInfo = {
+            ...payload
+        }
+    },
+}

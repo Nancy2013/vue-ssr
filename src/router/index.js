@@ -25,17 +25,16 @@ export function createRouter() {
   // 返回路由实例
   return new Router({
     mode: 'history',
-    routes: [
-      {
+    routes: [{
         path: '/',
-        redirect:'/home',
+        redirect: '/home',
       }, {
         path: '/home',
         name: 'home',
         component: Home,
       },
       {
-        path: '/detail',
+        path: '/detail/:id',
         name: 'detail',
         component: Detail,
       },

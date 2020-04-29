@@ -6,6 +6,17 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\actions.js
  */
-// 引入axios
-// 请求接口，获得返回的数据
-export default {}
+import axios from 'axios';
+export default {
+    getUserInfo({
+        commit
+    }, id) {
+        const url = 'https://www.fastmock.site/mock/e398c1e27a9fdac16c810a30b03ddb6a/vuessr/user';
+        return axios.get(url, id).then(result => {
+            commit('setUserInfo', result);
+        }).catch(err => {
+            console.error(err);
+        });
+
+    },
+}

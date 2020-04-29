@@ -15,26 +15,42 @@
  * 4、在onReady函数中调用resolve函数
  */
 
-import { createApp } from './app';
+import {
+  createApp
+} from './app';
 
-export default (context) => { 
-  return new Promise((resolve, reject) => { 
-    const { app, router,store } = createApp();
-    const { url } = context;
+export default (context) => {
+  return new Promise((resolve, reject) => {
+    const {
+      app,
+      router,
+      store
+    } = createApp();
+    const {
+      url
+    } = context;
     router.push(url);
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();
       // console.log(matchedComponents);
       // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
-        return reject({ code: 404 });
+        return reject({
+          code: 404
+        });
       }
-      // 使用Promise.all方法遍历路由
-      // 如果组件暴露asyncData方法，需要先请求数据，并传递store、当前路由
-      // 将请求结果添加入context，返回app
-      resolve(app);
+      Promise.all(matchedComponents.map(Components => {
+        if (Components.asyncData) {
+          return Components.asyncData({
+            store,
+            route: router.currentRoute
+          });
+        }
+      })).then(() => {
+        context.state = store.state;
+        router.currentRoute
+      }).catch(reject);
+
     }, reject);
   })
 }
-
-
