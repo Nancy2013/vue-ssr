@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-26 10:15:46
- * @LastEditTime: 2020-04-29 15:34:28
+ * @LastEditTime: 2020-04-29 15:43:15
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\server\index.js
@@ -35,8 +35,7 @@ function createRenderer() {
 const renderer = createRenderer();
 
 app.get('*', (req, res) => {
-  console.log(req.url);
-  
+
   const context = {
     title: 'vue ssr',
     url: req.url,

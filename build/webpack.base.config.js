@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-28 14:16:34
- * @LastEditTime: 2020-04-29 09:55:02
+ * @LastEditTime: 2020-04-29 15:42:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\build\webpack.base.config.js
@@ -52,24 +52,19 @@ module.exports = {
           name: '[name].[ext]?[hash]',
         },
       },
-      // {
-      //   test: /\.less$/,
-      //   use: isProd
-      //     ? ExtractTextPlugin.extract({
-      //         use: [
-      //           {
-      //             loader: 'css-loader',
-      //             options: { minimize: true },
-      //           },
-      //           'less-loader',
-      //         ],
-      //         fallback: 'vue-style-loader',
-      //       })
-      //     : ['vue-style-loader', 'css-loader', 'less-loader'],
-      // },
       {
         test: /\.less$/,
-        use: ['vue-style-loader', 'css-loader', 'less-loader'],
+        use: isProd
+          ? ExtractTextPlugin.extract({
+              use: [
+                {
+                  loader: 'css-loader',
+                },
+                'less-loader',
+              ],
+              fallback: 'vue-style-loader',
+            })
+          : ['vue-style-loader', 'css-loader', 'less-loader'],
       },
     ],
   },
