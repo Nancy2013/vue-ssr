@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-29 16:37:50
+ * @LastEditTime: 2020-04-30 09:46:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-server.js
@@ -32,23 +32,23 @@ export default (context) => {
     router.push(url);
     router.onReady(() => {
       const matchedComponents = router.getMatchedComponents();
-      // console.log(matchedComponents);
+      console.log(matchedComponents);
       // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
         return reject({
           code: 404
         });
       }
-      Promise.all(matchedComponents.map(Components => {
-        if (Components.asyncData) {
-          return Components.asyncData({
-            store,
-            route: router.currentRoute
-          });
-        }
-      })).then(() => {
+      console.log(router.currentRoute);
+      
+      Promise.all(matchedComponents.map(({
+        asyncData
+      }) => asyncData && asyncData({
+        store,
+        route: router.currentRoute
+      }))).then(() => {
         context.state = store.state;
-        router.currentRoute
+        resolve(app);
       }).catch(reject);
 
     }, reject);
