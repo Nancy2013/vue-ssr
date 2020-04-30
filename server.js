@@ -1,12 +1,13 @@
 /*
  * @Author: your name
  * @Date: 2020-04-26 10:15:46
- * @LastEditTime: 2020-04-30 14:53:31
+ * @LastEditTime: 2020-04-30 15:17:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\server\index.js
  */
 // node后台服务搭建
+// TODO 浏览器端打印
 const express = require('express');
 const path = require('path');
 const LRU = require('lru-cache');
@@ -33,7 +34,7 @@ function createRenderer(bundle, options) {
       max: 1000,
       maxAge: 1000 * 60 * 15
     })
-  }), );
+  }) );
 }
 
 function render(req,res) { 
