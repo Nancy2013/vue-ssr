@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-04-30 09:11:33
- * @LastEditTime: 2020-04-30 15:16:36
+ * @LastEditTime: 2020-04-30 16:28:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\views\Detail.vue
