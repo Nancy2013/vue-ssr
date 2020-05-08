@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-28 15:10:57
+ * @LastEditTime: 2020-04-30 09:17:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\app.js
@@ -15,9 +15,6 @@
  * 4、返回app、router
  * 5、服务器端不需要挂载
  */
-
-
-
 import Vue from 'vue';
 import App from './App.vue'
 import { sync } from 'vuex-router-sync'

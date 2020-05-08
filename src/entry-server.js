@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-29 16:37:50
+ * @LastEditTime: 2020-04-30 15:13:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-server.js
@@ -14,7 +14,7 @@
  * 3、进入首屏，push url
  * 4、在onReady函数中调用resolve函数
  */
-
+// TODO 服务端生命周期限制，调用
 import {
   createApp
 } from './app';
@@ -39,16 +39,16 @@ export default (context) => {
           code: 404
         });
       }
-      Promise.all(matchedComponents.map(Components => {
-        if (Components.asyncData) {
-          return Components.asyncData({
-            store,
-            route: router.currentRoute
-          });
-        }
-      })).then(() => {
+      // console.log(router.currentRoute);
+      
+      Promise.all(matchedComponents.map(({
+        asyncData
+      }) => asyncData && asyncData({
+        store,
+        route: router.currentRoute
+      }))).then(() => {
         context.state = store.state;
-        router.currentRoute
+        resolve(app);
       }).catch(reject);
 
     }, reject);

@@ -1,25 +1,32 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-04-30 09:11:33
+ * @LastEditTime: 2020-04-30 16:28:52
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \vue-ssr\src\views\Detail.vue
+ -->
 <template>
   <div>
-    <div>Detail</div>
-    <div :key="index"
-         v-for="(i,index)in userInfo">
-      {{i - userInfo[i]}}</div>
+    <div>userInfo</div>
+    <div :key="index" v-for="(value, key, index) in userInfo">
+      {{ `${key}: ${value}` }}
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Detail",
+  name: 'Detail',
   props: {
-    msg: String
+    msg: String,
   },
-  asyncData(store, route) {
-    console.log(route);
-    return store.dispatch("getUserInfo", route.params.id);
+  asyncData({ store, route }) {
+    return store.dispatch('getUserInfo', route.params.id);
   },
   computed: {
     userInfo() {
       return this.$store.state.userInfo;
-    }
-  }
+    },
+  },
 };
 </script>
