@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-04-29 15:43:52
+ * @LastEditTime: 2020-05-13 17:37:52
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\router\index.js
@@ -18,8 +18,14 @@ import Router from 'vue-router'
 // 注册全局插件
 Vue.use(Router);
 const Home = () => import('../views/Home.vue');
-const Detail = () => import('../views/Detail.vue');
-const About = () => import('../views/About.vue');
+const Login = () => import('../views/Login.vue');
+
+const context = require.context('./routes', false, /^\.\/(?!index)[^/]*\.js$/);
+
+const childrenRoutes = context.keys().reduce((rs, key) => {
+  rs.push(...context(key).default);
+  return rs;
+}, []);
 
 export function createRouter() {
   // 返回路由实例
@@ -32,16 +38,12 @@ export function createRouter() {
         path: '/home',
         name: 'home',
         component: Home,
+        children:childrenRoutes,
       },
       {
-        path: '/detail/:id',
-        name: 'detail',
-        component: Detail,
-      },
-      {
-        path: '/about',
-        name: 'about',
-        component: About,
+        path: '/login',
+        name: 'login',
+        component: Login,
       },
     ]
   });
