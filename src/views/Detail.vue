@@ -16,18 +16,18 @@
   </div>
 </template>
 <script>
-  export default {
-    name: "Detail",
-    props: {
-      msg: String
-    },
-    asyncData({ store, route }) {
-      return store.dispatch("getUserInfo", route.params.id);
-    },
-    computed: {
-      userInfo() {
-        return this.$store.state.userInfo;
-      }
+export default {
+  name: "Detail",
+  props: {
+    msg: String
+  },
+  asyncData({ store, route }) {
+    return store.dispatch("getUserInfo", route.params.id);
+  },
+  computed: {
+    userInfo() {
+      return this.$store.state.app.userInfo;
     }
-  };
+  }
+};
 </script>
