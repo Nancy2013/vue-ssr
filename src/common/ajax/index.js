@@ -11,42 +11,18 @@ import {
   URL_DEFAULT_PREFIXER,
   IS_SERIALIZER_PARAMS,
   REQ_TIME_OUT,
-} from 'configPath/index';
-import moment from 'moment';
-import { paramsSerializer, isPlainObject } from 'commonPath/utils';
+} from '../config';
+import {
+  paramsSerializer,
+  isPlainObject
+} from '../utils';
 import axiosInstance from './axios';
-import jsonp from './jsonp';
-import { ajaxFulFilledHandle, ajaxRejectedHandle } from './ajaxErrorHandle';
 
-function reqJSONP(url = '', params = {}, opts = {}) {
-  return jsonp(url, params, opts).then(
-    ({ data, options }) => ajaxFulFilledHandle(data, { type: 'jsonp', options }),
-    ajaxRejectedHandle
-  );
-}
-
-let payload;
-
-// 设置请求token
 function setAxiosCfg() {
-  const auth = JSON.parse(localStorage.getItem(`authB_${PROJECT.id}`) || '{}');
-  const { token, expired } = auth;
-  const client = 'web';
-  const timestamp = `${moment().unix()}`;
-  let sign = `${client}${timestamp}${token}`;
-  sign = payload === '{}' ? sign : `${sign}${payload}`;
-  const signSha1 = sha1(sign.replace(/\s/g, ''));
-  console.log(`${sign}`);
   return {
     paramsSerializer,
     timeout: REQ_TIME_OUT,
-    headers: {
-      interfaceVersion: '1',
-      client,
-      timestamp,
-      sign: signSha1,
-      token,
-    },
+    headers: {},
     validateStatus: (status) => true,
   };
 }
@@ -67,9 +43,6 @@ export const AJAX = {
       ...opts,
     });
   },
-  jsonp(url, params, opts) {
-    return reqJSONP(url, params, opts);
-  },
 };
 
 const defaultPrefixer = URL_DEFAULT_PREFIXER;
@@ -82,8 +55,7 @@ const defaultPrefixer = URL_DEFAULT_PREFIXER;
  * @prop {Boolean} isSerializerParams - 是否序列化提交数据
  */
 export function reqHandle(
-  path = '',
-  {
+  path = '', {
     method = DEFAULT_REQ_METHOD,
     prefixer = defaultPrefixer,
     isSerializerParams = IS_SERIALIZER_PARAMS,
@@ -95,9 +67,11 @@ export function reqHandle(
   }
 ) {
   const reqPath = path.indexOf('/') === 0 ? path.slice(1) : path;
-  const reqUrl = /http(s)?:\/\//.test(reqPath) ? reqPath : `${prefixer}/${reqPath}`;
+  const reqUrl = /http(s)?:\/\//.test(reqPath) ?
+    reqPath :
+    `${prefixer}/${reqPath}`;
 
-  return params => {
+  return (params) => {
     let reqParams = params;
     if (
       isSerializerParams &&
@@ -106,8 +80,6 @@ export function reqHandle(
     ) {
       reqParams = paramsSerializer(reqParams);
     }
-    payload = JSON.stringify(reqParams);
-    console.log(JSON.stringify(reqParams));
     return AJAX[method.toLowerCase()](reqUrl, reqParams, {
       ...props,
     });

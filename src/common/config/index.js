@@ -32,7 +32,7 @@ export const DEFAULT_REQ_METHOD = HTTP_METHOD.GET;
  * @default
  */
 export const BASE_URL = ''; // 服务器ip
-export const URL_DEFAULT_PREFIXER = 'https://www.fastmock.site/mock/e398c1e27a9fdac16c810a30b03ddb6a/vuessr/'; // 默认请求前缀，发布时，前后端为不同服务器使用 http://10.10.30.70:8282
+export const URL_DEFAULT_PREFIXER = 'https://www.fastmock.site/mock/e398c1e27a9fdac16c810a30b03ddb6a/vuessr'; // 默认请求前缀，发布时，前后端为不同服务器使用 http://10.10.30.70:8282
 
 /**
  * 请求默认超时时间

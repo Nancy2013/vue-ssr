@@ -9,24 +9,25 @@
 <template>
   <div>
     <div>userInfo</div>
-    <div :key="index" v-for="(value, key, index) in userInfo">
+    <div :key="index"
+         v-for="(value, key, index) in userInfo">
       {{ `${key}: ${value}` }}
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'Detail',
+  name: "Detail",
   props: {
-    msg: String,
+    msg: String
   },
   asyncData({ store, route }) {
-    return store.dispatch('app/getUserInfo', route.params.id);
+    return store.dispatch("app/getUserInfo", { id: route.params.id });
   },
   computed: {
     userInfo() {
       return this.$store.state.app.userInfo;
-    },
-  },
+    }
+  }
 };
 </script>

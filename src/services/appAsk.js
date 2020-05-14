@@ -6,8 +6,12 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\services\appAsk.js
  */
-import { HTTP_METHOD } from './../common/config/index';
-import { reqHandle } from './../common/ajax';
+import {
+  HTTP_METHOD
+} from './../common/config/index';
+import {
+  reqHandle
+} from './../common/ajax';
 
 export default {
   getUserInfo: reqHandle('/user', {

@@ -9,13 +9,18 @@
  * ajax 错误处理
  * @see 具体参数文档 - https://github.com/mzabriskie/axios#response-schema
  */
-import { DEFAULT_ERR_MSG } from 'configPath/index';
+import {
+  DEFAULT_ERR_MSG
+} from '../config';
 
 export function ajaxFulFilledHandle(data = {}, config) {
   return new Promise((resolve, reject) => {
-    console.log(data);
-    const { errcode } = data;
-    let errMsg = JSON.stringify(data.errmsg || DEFAULT_ERR_MSG);
+
+    const {
+      message,
+      errcode,
+    } = data;
+    let errMsg = JSON.stringify(message || DEFAULT_ERR_MSG);
     if (errcode === 200) {
       // 返回成功
       resolve(data);
@@ -31,7 +36,9 @@ export function ajaxFulFilledHandle(data = {}, config) {
 
 export function ajaxRejectedHandle(err) {
   console.error('ajax err', err);
-  const { response } = err;
+  const {
+    response
+  } = err;
   console.error(response.statusText);
   return Promise.reject(err);
 }
