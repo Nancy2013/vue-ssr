@@ -1,18 +1,19 @@
 /*
  * @Author: your name
  * @Date: 2020-04-28 09:55:59
- * @LastEditTime: 2020-04-30 16:55:44
+ * @LastEditTime: 2020-05-14 18:24:04
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\actions.js
  */
-import axios from 'axios';
+import service from '../services/index';
+const { appAsk } = service;
+
 export default {
     getUserInfo({
         commit
-    }, id) {
-        const url = 'https://www.fastmock.site/mock/e398c1e27a9fdac16c810a30b03ddb6a/vuessr/user';
-        return axios.get(`${url}/${id}`).then(result => {
+    }, params) {
+        return appAsk.getUserInfo(params).then(result => {
             const { status, data } = result.data;
         
             if (status === '0') {
@@ -20,9 +21,6 @@ export default {
                 commit('setUserInfo', userInfo);
              }
 
-        }).catch(err => {
-            console.error(err);
-        });
-
+        })
     },
 }
