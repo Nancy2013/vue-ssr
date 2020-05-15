@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-28 14:16:34
- * @LastEditTime: 2020-04-28 15:24:43
+ * @LastEditTime: 2020-05-15 10:43:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\build\webpack.base.config.js
@@ -26,7 +26,7 @@ module.exports = merge(base, {
     libraryTarget: 'commonjs2'
   },
   resolve: {
-    alias: {}
+    // alias: {}
   },
   externals: nodeExternals({
     // do not externalize CSS files in case we need to import it from a dep

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-28 14:16:34
- * @LastEditTime: 2020-04-30 14:12:13
+ * @LastEditTime: 2020-05-15 10:53:40
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\build\webpack.base.config.js
@@ -9,6 +9,7 @@
 // 基础通用配置
 const path = require('path');
 const webpack = require('webpack');
+const alias = require('./alias');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
@@ -25,6 +26,7 @@ module.exports = {
   resolve: {
     alias: {
       public: path.resolve(__dirname, '../public'),
+      ...alias,
     },
   },
   module: {

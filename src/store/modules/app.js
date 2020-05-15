@@ -1,15 +1,16 @@
 /*
  * @Author: your name
  * @Date: 2020-05-14 14:21:12
- * @LastEditTime: 2020-05-14 18:26:11
+ * @LastEditTime: 2020-05-15 10:39:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\modules\app.js
  */
-import service from '../../services/index';
+import services from 'servicesPath/index';
+
 const {
     appAsk
-} = service;
+} = services;
 
 const app = {
     namespaced: true,

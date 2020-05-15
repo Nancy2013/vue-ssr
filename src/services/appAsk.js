@@ -1,17 +1,17 @@
 /*
  * @Author: your name
  * @Date: 2020-05-14 14:26:19
- * @LastEditTime: 2020-05-14 18:15:09
+ * @LastEditTime: 2020-05-15 10:03:24
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\services\appAsk.js
  */
 import {
   HTTP_METHOD
-} from './../common/config/index';
+} from 'commonPath/config/index';
 import {
   reqHandle
-} from './../common/ajax';
+} from 'commonPath/ajax';
 
 export default {
   getUserInfo: reqHandle('/user', {

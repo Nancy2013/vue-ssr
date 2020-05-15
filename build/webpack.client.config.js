@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-28 14:16:34
- * @LastEditTime: 2020-04-28 16:38:07
+ * @LastEditTime: 2020-05-15 10:42:42
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\build\webpack.base.config.js
@@ -20,7 +20,7 @@ const config = merge(base, {
     app: './src/entry-client.js'
   },
   resolve: {
-    alias: {}
+    // alias: {}
   },
   plugins: [
     // strip dev-only code in Vue source
