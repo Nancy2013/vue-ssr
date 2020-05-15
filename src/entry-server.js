@@ -1,14 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-05-13 18:01:17
+ * @LastEditTime: 2020-05-15 11:22:37
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-server.js
  */
-/**   
+/**
  * 服务端入口，渲染首屏
- * 
+ *
  * 1、引入createApp工厂函数
  * 2、使用context参数
  * 3、进入首屏，push url
@@ -19,8 +19,7 @@ import {
   createApp
 } from './app';
 
-export default (context) => {
-  return new Promise((resolve, reject) => {
+export default (context) => new Promise((resolve, reject) => {
     const {
       app,
       router,
@@ -49,7 +48,5 @@ export default (context) => {
         context.state = store.state;
         resolve(app);
       }).catch(reject);
-
     }, reject);
-  })
-}
+  });

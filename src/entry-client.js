@@ -6,9 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-client.js
  */
-/**   
+/**
  * 客户端入口，挂载、激活APP
- * 
+ *
  * 1、引入createApp工厂函数
  * 2、在onReady函数中挂载APP
  */
@@ -24,7 +24,7 @@ const {
 
 // 客户端数据预取
 if (window.__INITIAL_STATE__) {
-  store.replaceState(window.__INITIAL_STATE__)
+  store.replaceState(window.__INITIAL_STATE__);
 }
 // 在路由导航之前解析数据
 router.onReady(() => {
@@ -34,9 +34,7 @@ router.onReady(() => {
     let diffed = false;
 
     // 过滤非预渲染的组件，以及重新渲染的组件
-    const activated = matched.filter((c, i) => {
-      return diffed || (diffed = (prevMatched[i] !== c));
-    });
+    const activated = matched.filter((c, i) => diffed || (diffed = (prevMatched[i] !== c)));
 
     if (!activated.length) {
       next();
@@ -47,14 +45,13 @@ router.onReady(() => {
         return c.asyncData({
           store,
           route: to
-        })
+        });
       }
     })).then(() => {
-
       // 停止加载指示器(loading indicator)
 
-      next()
-    }).catch(next)
+      next();
+    }).catch(next);
   });
   app.$mount('#app');
 });
