@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-04-27 09:16:24
- * @LastEditTime: 2020-05-15 17:22:29
+ * @LastEditTime: 2020-05-15 17:37:20
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\entry-server.js
@@ -33,9 +33,9 @@ export default (context) => new Promise((resolve, reject) => {
       const matchedComponents = router.getMatchedComponents();
       // 匹配不到的路由，执行 reject 函数，并返回 404
       if (!matchedComponents.length) {
-        return reject(new Error({
+        return reject({
           code: 404
-        }));
+        });
       }
       // console.log(router.currentRoute);
 
