@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-06-22 11:51:43
- * @LastEditTime: 2020-05-14 18:12:05
+ * @LastEditTime: 2020-05-15 17:31:22
  * @LastEditors: Please set LastEditors
  */
 /**
@@ -15,12 +15,11 @@ import {
 
 export function ajaxFulFilledHandle(data = {}, config) {
   return new Promise((resolve, reject) => {
-
     const {
-      message,
+      errmsg,
       errcode,
     } = data;
-    let errMsg = JSON.stringify(message || DEFAULT_ERR_MSG);
+    let errMsg = JSON.stringify(errmsg || DEFAULT_ERR_MSG);
     if (errcode === 200) {
       // 返回成功
       resolve(data);

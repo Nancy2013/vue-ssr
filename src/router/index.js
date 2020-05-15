@@ -6,14 +6,14 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\router\index.js
  */
-/** 
+/**
  * 1、异步引入组件
    2、创建createRouter工厂函数
    3、返回router实例，为避免数据污染
    4、设置hash：'history'，后端无法拿到'#'后面的路径
  */
 import Vue from 'vue';
-import Router from 'vue-router'
+import Router from 'vue-router';
 
 // 注册全局插件
 Vue.use(Router);
@@ -38,7 +38,7 @@ export function createRouter() {
         path: '/home',
         name: 'home',
         component: Home,
-        children:childrenRoutes,
+        children: childrenRoutes,
       },
       {
         path: '/login',

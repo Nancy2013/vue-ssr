@@ -2,7 +2,7 @@
  * @Description: In User Settings Edit
  * @Author: your name
  * @Date: 2019-06-22 11:51:44
- * @LastEditTime: 2020-05-15 11:18:30
+ * @LastEditTime: 2020-05-15 17:17:11
  * @LastEditors: Please set LastEditors
  */
 const alias = require('./build/alias');
@@ -54,16 +54,8 @@ module.exports = {
         switchCase: 1,
       },
     ],
-    'vue/max-attributes-per-line': [
-      2,
-      {
-        singleline: 1,
-        multiline: {
-          max: 1,
-          allowFirstLine: true,
-        },
-      },
-    ],
+    'vue/html-indent':'off',
+    'vue/max-attributes-per-line':'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'quotes': ['error', 'single'],

@@ -6,4 +6,4 @@
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\getters.js
  */
-export default {}
+export default {};

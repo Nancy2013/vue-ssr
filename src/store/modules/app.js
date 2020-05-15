@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-05-14 14:21:12
- * @LastEditTime: 2020-05-15 10:39:01
+ * @LastEditTime: 2020-05-15 17:33:35
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \vue-ssr\src\store\modules\app.js
@@ -21,7 +21,7 @@ const app = {
         setUserInfo(state, payload) {
             state.userInfo = {
                 ...payload
-            }
+            };
         },
     },
     actions: {
@@ -30,20 +30,19 @@ const app = {
         }, params) {
             return appAsk.getUserInfo(params).then(result => {
                 const {
-                    status,
+                    errcode,
                     data
                 } = result;
 
-                if (status === '0') {
+                if (errcode === 200) {
                     const {
                         userInfo
                     } = data;
                     commit('setUserInfo', userInfo);
                 }
-
-            })
+            });
         },
     }
-}
+};
 
 export default app;
